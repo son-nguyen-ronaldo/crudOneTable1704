@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2>Add Student</h2>
+    <div style="float: left">
+        <button type="button" class="btn btn-success"><a href="/student">ComeBack</a></button>
+    </div>
+    <form th:object="${addStudent}" th:action="@{/create}" method="post">
+        <table class="table table-bordered">
+            <tr>
+                <th>Name</th>
+                <td><input th:field="*{name}"></td>
+                <td style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+            </tr>
+            <tr>
+                <th>Birthday</th>
+                <td><input th:field="*{birthday}" type="date"></td>
+                <td  style="color: red" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input th:field="*{email}"></td>
+            </tr>
+            <tr>
+                <th>Addrees</th>
+                <td><input th:field="*{addrees}"></td>
+                <td style="color: red" th:if="${#fields.hasErrors('addrees')}" th:errors="*{addrees}"></td>
+            </tr>
+        </table>
+        <button type="submit">Save Student</button>
+    </form>
+</div>
+</body>
+</html>
